@@ -38,11 +38,11 @@ router.post("/:cid/product/:pid", async (req, res) => {
     const cart = await cartManager.getCartById(Number(cid), Number(pid));
     if (!cart) return res.status(404).json({ status: "Error", msg: `No se encontró el carrito con el ID: ${cid}` });
 
-  // Agregar el producto al carrito
-  const updatedCart = await cartManager.addProductToCart(Number(cid), Number(pid));
 
-  // Responder con el carrito actualizado
-  res.status(200).json({ status: "success", cart: updatedCart });
+    const updatedCart = await cartManager.addProductToCart(Number(cid), Number(pid));
+
+
+    res.status(200).json({ status: "success", cart: updatedCart });
   } catch (error) {
     console.log(error);
     res.status(500).json({ status: "Error", msg: "Error interno del servidor" });
