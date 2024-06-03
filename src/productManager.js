@@ -30,7 +30,7 @@ const getProducts = async (limit) => {
   const productsJson = await fs.promises.readFile(pathFile, "utf8");
   const productsParse = JSON.parse(productsJson);
   products = productsParse || [];
-
+  
   if (!limit) return products;
 
   return products.slice(0, limit);
