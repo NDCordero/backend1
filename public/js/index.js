@@ -41,7 +41,7 @@ deleteForm.addEventListener("submit", async (e) => {
 // Recibir productos
 socket.on("products", (data) => {
   console.log(data);
-  // productsList.innerHTML = "";
+  productsList.innerHTML = "";
   data.forEach((product) => {
     const card = document.createElement("div");
     card.classList.add("card");

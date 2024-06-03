@@ -4,7 +4,6 @@ import __dirname from "./dirname.js";
 import handlebars from "express-handlebars";
 import { Server } from "socket.io";
 import viewsRoutes from "./routes/views.routes.js";
-import productManager from "./productManager.js";
 
 const app = express();
 
@@ -28,8 +27,6 @@ const httpServer = app.listen(8080, () => {
 // Configuramos socket
 export const io = new Server(httpServer);
 
-io.on("connection", async socket => {
+io.on("connection", (socket) => {
   console.log("Nuevo usuario Conectado");
-  const products = await productManager.getProducts();
-  io.emit("products", { products });
 });
