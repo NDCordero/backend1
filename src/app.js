@@ -4,8 +4,12 @@ import __dirname from "./dirname.js";
 import handlebars from "express-handlebars";
 import { Server } from "socket.io";
 import viewsRoutes from "./routes/views.routes.js";
+import { connectMongoDB } from "./config/mongoDB.config.js";
 
 const app = express();
+
+// Ejecutar la conexión de mongo
+connectMongoDB();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
